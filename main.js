@@ -99,11 +99,13 @@ $(document).ready(() => {
       return weather;
     });
 
-    showTemp();
+    showTemp.call($('#show-temp'));
     console.log('modified 4-day forecast:', fourDayForecast);
   }
 
   function showTemp() {
+    $(this).addClass('btn-primary');
+    $(this).siblings().removeClass('btn-primary');
     fourDayForecast.forEach((day, i) => {
       let $temps = $('<div>').addClass('bar');
       $temps.text('low: ' + day.low.fahrenheit + ', high: ' + day.high.fahrenheit);
@@ -112,9 +114,11 @@ $(document).ready(() => {
   }
 
   function showPop() {
+    $(this).addClass('btn-primary');
+    $(this).siblings().removeClass('btn-primary');
     fourDayForecast.forEach((day, i) => {
       let $pop = $('<div>').addClass('bar');
-      $pop.text(day.precip_prob + '%');
+      $pop.text(day.precip_prob + '% Chance');
       $('#day' + (i+1)).empty().append( $pop );
     });
   }

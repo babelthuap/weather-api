@@ -6,6 +6,14 @@
   font-size: 18px;
 }
 
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
 .pane {
   border: 1px solid grey;
   border-radius: 5px;
@@ -19,5 +27,5 @@
   padding-right: 2px;
   width: 85%;
   background-color: #317eac;
-  color: white;
+  /*color: white;*/
 }

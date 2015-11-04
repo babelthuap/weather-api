@@ -11,12 +11,14 @@
 <body>
 <div class="container">
   <div class="row"><h1>Weathertop</h1></div>
-  <div class="row">
+  <div class="row"><em>by <a href="https://babelthuap.github.io/">Nicholas Neumann-Chun</a></em></div>
+  <p></p>
+  <div class="row"> <!-- location input -->
     <input type="text" id="location" size="30" placeholder="Zip Code or City, State">
-    <button id="search" class="btn btn-primary"><i class="fa fa-search"></i></button>
+    <button id="search" class="btn btn-info"><i class="fa fa-search"></i></button>
   </div>
   <hr>
-  <div class="pane col col-xs-12 col-sm-5">
+  <div class="pane col col-xs-12 col-sm-5"> <!-- current conditions -->
     <h3>Current Conditions in <span id="city"></span></h3>
     <hr>
     <p><em id="time"></em></p>
@@ -24,11 +26,11 @@
     <p>Feels Like: <span id="feels-like"></span>&deg;F</p>
     <p id="icon">rain?</p>
   </div>
-  <div class="pane col col-xs-12 col-sm-6">
+  <div class="pane col col-xs-12 col-sm-6"> <!-- forecast -->
     <div class="row">
       <div class="col col-xs-12 col-sm-6"><h3>4-Day Forecast</h3></div>
       <div class="col col-xs-12 col-sm-6">
-        <button id="show-temp" class="btn btn-default">Temperature</button>
+        <button id="show-temp" class="btn btn-default">Temperatures</button>
         <button id="show-pop" class="btn btn-default">Precipitation</button>
       </div>
     </div>
