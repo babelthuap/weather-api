@@ -112,7 +112,11 @@ $(document).ready(() => {
   }
 
   function showPop() {
-
+    fourDayForecast.forEach((day, i) => {
+      let $pop = $('<div>').addClass('bar');
+      $pop.text(day.precip_prob + '%');
+      $('#day' + (i+1)).empty().append( $pop );
+    });
   }
 
   function getLocation() {
