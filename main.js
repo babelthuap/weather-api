@@ -3,6 +3,7 @@
 $(document).ready(() => {
 
   var apiURL = 'https://api.wunderground.com/api/d32ba52127cb11ec/';
+  var $error = $('#error').empty();
   var currentConditions;
   var fourDayForecast;
   fetchFromAPI('autoip', 'autoip')
@@ -24,7 +25,7 @@ $(document).ready(() => {
 
   function fetchFromAPI(location, type) {
     if (isNaN(+location) && location !== 'autoip') {
-       location = location.slice(-2).replace(/ /, '_') + '/' + location.slice(0,-4);
+       location = location.slice(-2).replace(/ +/, '_') + '/' + location.slice(0,-4);
     }
     var path;
     if (type === 'current') {
@@ -54,10 +55,11 @@ $(document).ready(() => {
             $('#location').val( city + ', ' + state );
             update();
           }
+          $error.empty();
 
         } catch (e) {
           // console.log('ERROR:', e)
-          alert('invalid location');
+          $error.text('Invalid Location');
         }
       },
       error: (promise, status, error) => {
@@ -121,7 +123,8 @@ $(document).ready(() => {
     fourDayForecast.forEach((day, i) => {
       $('#day' + (i+1)).text(day.day + ': ');
       var width = putInRange(+day.high.fahrenheit, min, max);
-      $('#day' + (i+1) + 'bar').text('low: ' + day.low.fahrenheit).css('width', width + '%'); //3-57 %
+      $('#day' + (i+1) + 'bar').text('low: ' + day.low.fahrenheit).css({'width': '3%', 'opacity': '0'})
+                               .animate({'width': width + '%', 'opacity': '1'}, 400); //3-57 %
       $('#day' + (i+1) + 'label' ).text(' high: ' + day.high.fahrenheit);
     });
   }
@@ -134,7 +137,8 @@ $(document).ready(() => {
       // console.log(+day.precip_prob);
       var width = putInRange(+day.precip_prob, 0, 100);
       // console.log(width);
-      $('#day' + (i+1) + 'bar').text('-').css('width', width + '%'); //3-57 %
+      $('#day' + (i+1) + 'bar').text('-').css({'width': '3%', 'opacity': '0'}) //3-57 %
+                               .animate({'width': width + '%', 'opacity': '1'}, 400);
       $('#day' + (i+1) + 'label' ).text(' ' + day.precip_prob + '% Chance');
     });
   }

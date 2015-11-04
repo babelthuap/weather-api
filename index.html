@@ -15,7 +15,7 @@
   <p></p>
   <div class="row"> <!-- location input -->
     <input type="text" id="location" size="30" placeholder="Zip Code or City, State">
-    <button id="search" class="btn btn-info"><i class="fa fa-search"></i></button>
+    <button id="search" class="btn btn-info"><i class="fa fa-search"></i></button> <span id="error"></span>
   </div>
   <hr>
   <div class="pane col col-xs-12 col-sm-5"> <!-- current conditions -->
@@ -28,8 +28,8 @@
   </div>
   <div class="pane col col-xs-12 col-sm-6"> <!-- forecast -->
     <div class="row">
-      <div class="col col-xs-12 col-sm-6"><h3>4-Day Forecast</h3></div>
-      <div class="col col-xs-12 col-sm-6">
+      <div class="col col-xs-12 col-sm-5"><h3>4-Day Forecast</h3></div>
+      <div class="col col-xs-12 col-sm-7" id="type-of-forecast">
         <button id="show-temp" class="btn btn-default">Temperatures</button>
         <button id="show-pop" class="btn btn-default">Precipitation</button>
       </div>
