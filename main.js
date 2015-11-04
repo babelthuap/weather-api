@@ -16,7 +16,7 @@ $(document).ready(() => {
 
   function update() {
     let location = getLocation();
-    console.log('location:', location);
+    // console.log('location:', location);
     fetchFromAPI(location, 'current');
     fetchFromAPI(location, 'forecast');
     $('#location').focus();
@@ -34,7 +34,7 @@ $(document).ready(() => {
     } else if (type === 'autoip') {
       path = 'geolookup/q/';
     }
-    console.log('fetching from:', apiURL + path + location + ".json"); // DEBUG
+    // console.log('fetching from:', apiURL + path + location + ".json"); // DEBUG
     $.ajax({
       url: apiURL + path + location + ".json", // assuming zipcode for now
       dataType: "jsonp",
@@ -56,18 +56,18 @@ $(document).ready(() => {
           }
 
         } catch (e) {
-          console.log('ERROR:', e)
+          // console.log('ERROR:', e)
           alert('invalid location');
         }
       },
       error: (promise, status, error) => {
-        console.log("promise:", promise, " status:", status, " error:", error);
+        // console.log("promise:", promise, " status:", status, " error:", error);
       }
     });
   }
 
   function updateCurrentWeather(location) {
-    console.log('CURRENT CONDITIONS:', currentConditions);
+    // console.log('CURRENT CONDITIONS:', currentConditions);
     var city = currentConditions['location']['city'];
     var state = currentConditions['location']['state'];
     var time = currentTime();
@@ -86,7 +86,7 @@ $(document).ready(() => {
   }
 
   function updateWeatherForecast(location) {
-    console.log('4-DAY FORECAST:', fourDayForecast);
+    // console.log('4-DAY FORECAST:', fourDayForecast);
 
     fourDayForecast = fourDayForecast.map((day) => {
       var weather = {};
@@ -100,7 +100,7 @@ $(document).ready(() => {
     });
 
     showTemp.call($('#show-temp'));
-    console.log('modified 4-day forecast:', fourDayForecast);
+    // console.log('modified 4-day forecast:', fourDayForecast);
   }
 
   function putInRange(val, min, max) {
@@ -131,9 +131,9 @@ $(document).ready(() => {
     $(this).siblings().removeClass('btn-primary');
     fourDayForecast.forEach((day, i) => {
       $('#day' + (i+1)).text(day.day + ': ');
-      console.log(+day.precip_prob);
+      // console.log(+day.precip_prob);
       var width = putInRange(+day.precip_prob, 0, 100);
-      console.log(width);
+      // console.log(width);
       $('#day' + (i+1) + 'bar').text('-').css('width', width + '%'); //3-57 %
       $('#day' + (i+1) + 'label' ).text(' ' + day.precip_prob + '% Chance');
     });
