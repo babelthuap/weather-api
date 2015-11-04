@@ -21,10 +21,10 @@
   <div class="pane col col-xs-12 col-sm-5"> <!-- current conditions -->
     <h3>Current Conditions in <span id="city"></span></h3>
     <hr>
-    <p><em id="time"></em></p>
+    <p><em id="time">time</em></p>
     <p>Temperature: <span id="current-temp"></span>&deg;F</p>
     <p>Feels Like: <span id="feels-like"></span>&deg;F</p>
-    <p id="icon">rain?</p>
+    <p id="icon">icon</p>
   </div>
   <div class="pane col col-xs-12 col-sm-6"> <!-- forecast -->
     <div class="row">
@@ -35,11 +35,19 @@
       </div>
     </div>
     <hr>
-    <div class="row">
-      <div class="col col-lg-12"><p>Day 1: <span id="day1"></span></p></div>
-      <div class="col col-lg-12"><p>Day 2: <span id="day2"></span></p></div>
-      <div class="col col-lg-12"><p>Day 3: <span id="day3"></span></p></div>
-      <div class="col col-lg-12"><p>Day 4: <span id="day4"></span></p></div>
+    <div class="row" id="graph"> <!-- forecast graph -->
+      <div class="col col-lg-12">
+        <p><span id="day1"></span> <span id="day1bar" class="bar"></span><span id="day1label"></span></p>
+      </div>
+      <div class="col col-lg-12">
+        <p><span id="day2"></span> <span id="day2bar" class="bar"></span><span id="day2label"></span></p>
+      </div>
+      <div class="col col-lg-12">
+        <p><span id="day3"></span> <span id="day3bar" class="bar"></span><span id="day3label"></span></p>
+      </div>
+      <div class="col col-lg-12">
+        <p><span id="day4"></span> <span id="day4bar" class="bar"></span><span id="day4label"></span></p>
+      </div>
     </div>
   </div>
 

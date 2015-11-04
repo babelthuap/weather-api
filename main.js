@@ -103,13 +103,26 @@ $(document).ready(() => {
     console.log('modified 4-day forecast:', fourDayForecast);
   }
 
+  function putInRange(val, min, max) {
+    return 3 + (val + min) / (max + min) * 54;
+  }
+
   function showTemp() {
     $(this).addClass('btn-primary');
     $(this).siblings().removeClass('btn-primary');
+    var max = fourDayForecast.reduce(function(max, day){
+      var high = +day.high.fahrenheit;
+      return high > max ? high : max;
+    }, -Infinity);
+    var min = fourDayForecast.reduce(function(min, day){
+      var high = +day.high.fahrenheit;
+      return high < min ? high : min;
+    }, Infinity);
     fourDayForecast.forEach((day, i) => {
-      let $temps = $('<div>').addClass('bar');
-      $temps.text('low: ' + day.low.fahrenheit + ', high: ' + day.high.fahrenheit);
-      $('#day' + (i+1)).empty().append( $temps );
+      $('#day' + (i+1)).text(day.day + ': ');
+      var width = putInRange(+day.high.fahrenheit, min, max);
+      $('#day' + (i+1) + 'bar').text('low: ' + day.low.fahrenheit).css('width', width + '%'); //3-57 %
+      $('#day' + (i+1) + 'label' ).text(' high: ' + day.high.fahrenheit);
     });
   }
 
@@ -117,9 +130,12 @@ $(document).ready(() => {
     $(this).addClass('btn-primary');
     $(this).siblings().removeClass('btn-primary');
     fourDayForecast.forEach((day, i) => {
-      let $pop = $('<div>').addClass('bar');
-      $pop.text(day.precip_prob + '% Chance');
-      $('#day' + (i+1)).empty().append( $pop );
+      $('#day' + (i+1)).text(day.day + ': ');
+      console.log(+day.precip_prob);
+      var width = putInRange(+day.precip_prob, 0, 100);
+      console.log(width);
+      $('#day' + (i+1) + 'bar').text('-').css('width', width + '%'); //3-57 %
+      $('#day' + (i+1) + 'label' ).text(' ' + day.precip_prob + '% Chance');
     });
   }
 
@@ -131,6 +147,7 @@ $(document).ready(() => {
     var now = new Date();
     var hr = now.getHours();
     var min = ('00' + now.getMinutes()).slice(-2);
-    return hr + ":" + min + " (your time)";
+    var date = now.toDateString();
+    return hr + ":" + min + " on " + date;
   }
 });
