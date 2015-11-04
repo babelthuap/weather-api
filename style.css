@@ -34,6 +34,10 @@ a:hover {
   height: 20px;
 }
 
+#day1label, #day2label, #day3label, #day4label {
+  color: #A86D00;
+}
+
 .bar {
   display: inline-block;
   text-align: right;

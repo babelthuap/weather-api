@@ -129,7 +129,7 @@ $(document).ready(() => {
     });
   }
 
-  function showPop() {
+  function showPop() { // THIS REPEATS A LOT OF showTemp -- TOO WET
     $(this).addClass('btn-primary');
     $(this).siblings().removeClass('btn-primary');
     fourDayForecast.forEach((day, i) => {
