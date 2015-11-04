@@ -2,7 +2,7 @@
 
 $(document).ready(() => {
 
-  var apiURL = 'http://api.wunderground.com/api/d32ba52127cb11ec/';
+  var apiURL = 'https://api.wunderground.com/api/d32ba52127cb11ec/';
   var currentConditions;
   var fourDayForecast;
   fetchFromAPI('autoip', 'autoip')
