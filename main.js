@@ -11,6 +11,8 @@ $(document).ready(() => {
   $('#location').on('keypress', (e) => {
     if (e.charCode === 13) update();
   });
+  $('#show-temp').click(showTemp);
+  $('#show-pop').click(showPop);
 
   function update() {
     let location = getLocation();
@@ -96,7 +98,21 @@ $(document).ready(() => {
       weather.day = day.date.monthname_short + ' ' + day.date.day;
       return weather;
     });
+
+    showTemp();
     console.log('modified 4-day forecast:', fourDayForecast);
+  }
+
+  function showTemp() {
+    fourDayForecast.forEach((day, i) => {
+      let $temps = $('<div>').addClass('bar');
+      $temps.text('low: ' + day.low.fahrenheit + ', high: ' + day.high.fahrenheit);
+      $('#day' + (i+1)).empty().append( $temps );
+    });
+  }
+
+  function showPop() {
+
   }
 
   function getLocation() {

@@ -11,3 +11,12 @@
   border-radius: 5px;
   margin: 3px;
 }
+
+.bar {
+  display: inline-block;
+  text-align: right;
+  padding-right: 2px;
+  width: 85%;
+  background-color: #317eac;
+  color: white;
+}
