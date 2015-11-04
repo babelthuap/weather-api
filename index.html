@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Weathertop</title>
+
+  <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/cerulean/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+  <div class="row"><h1>Weathertop</h1></div>
+  <div class="row">
+    <input type="text" id="location" size="30">
+    <button id="search" class="btn btn-primary"><i class="fa fa-search"></i></button>
+  </div>
+  <hr>
+  <div class="pane col col-xs-12 col-sm-5">
+    <h3>Current Conditions in <span id="city"></span></h3>
+    <hr>
+    <p><em id="time"></em></p>
+    <p>Temperature: <span id="current-temp"></span>&deg;F</p>
+    <p>Feels Like: <span id="feels-like"></span>&deg;F</p>
+    <p id="icon">rain?</p>
+  </div>
+  <div class="pane col col-xs-12 col-sm-6">
+    <div class="row">
+      <div class="col col-xs-12 col-sm-6"><h3>4-Day Forecast</h3></div>
+      <div class="col col-xs-12 col-sm-6">
+        <button id="show-temp" class="btn btn-default">Temperature</button>
+        <button id="show-pop" class="btn btn-default">Precipitation</button>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col col-lg-12"><p>Day 1: <div id="day1"></div></p></div>
+      <div class="col col-lg-12"><p>Day 2: <div id="day2"></div></p></div>
+      <div class="col col-lg-12"><p>Day 3: <div id="day3"></div></p></div>
+      <div class="col col-lg-12"><p>Day 4: <div id="day4"></div></p></div>
+    </div>
+  </div>
+
+
+</div>
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
